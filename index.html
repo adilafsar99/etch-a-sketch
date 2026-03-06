@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Etch-a-Sketch</title>
+	</head>
+	<body>
+		<header class="header">Etch-A-Sketch</header>
+		<main class="main">
+			<div class="buttons-and-grid">
+				<div class="buttons">
+					<button id="toggle-btn">Toggle Grid Lines</button>
+				</div>
+				<div class="grid"></div>
+			</div>
+            <div class="slider">
+                <label for="slider">Adjust the number of squares in the grid.</label>
+               <input type="range" id="slider" min="16" max="64" step="1" list="markers">
+               <datalist id="markers">
+                  <option value="16"></option>
+                  <option value="32"></option>
+                  <option value="48"></option>
+                  <option value="64"></option>
+               </datalist>
+            </div>
+		</main>
+	</body>
+</html>
