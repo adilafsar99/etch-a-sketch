@@ -13,7 +13,13 @@ Create a grid
 
 Toggle grid lines
 
-1) Run a function every time the button for toggling the grid lines is clicked.
+1) Call a function when the button for toggling the grid lines is clicked.
 2) Fetch all the "column" containers.
 3) Toggle the class name "showGrid".
 4) Give the "showGrid" class styles to show the borders of the "column" containers.
+
+Adjust grid size
+
+1) Call a function whenever the slider is moved.
+2) Remove all the containers currently present in the grid.
+3) Read the value of the slider and pass it to the function that creates grids.
