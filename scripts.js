@@ -2,6 +2,7 @@ const createGrid = function (numOfSquares = 16) {
     let rows = numOfSquares;
     let columns = numOfSquares;
     const grid = document.querySelector('.grid');
+    grid.replaceChildren();
     for (i = 1; i <= rows; i++) {
         let row = document.createElement('div');
         row.classList.add('row');
@@ -17,6 +18,11 @@ const createGrid = function (numOfSquares = 16) {
 const toggleGridLines = function (event) {
     const columns = document.querySelectorAll('.column');
     columns.forEach(column => column.classList.toggle('showGrid'));
+}
+
+const adjustGrid = function (event) {
+    let numOfSquares = event.target.value;
+    createGrid(numOfSquares);
 }
 
 const toggleButton = document.querySelector('#toggle-button');
