@@ -42,12 +42,17 @@ button {
     cursor: pointer;
     border: 2px solid black;
     padding: 3px;
-    transition: color 1s, background-color 1s;
+    transition: color 0.5s, background-color 1s;
 }
 
 button:hover {
     color: white;
     background-color: black;
+}
+
+button:active {
+    background-color: grey;
+    border: 2px solid beige;
 }
 
 .grid {
@@ -60,7 +65,6 @@ button:hover {
 
 .row {
     width: 100%;
-    height: max-content;
     display: flex;
     flex-wrap: nowrap;
     flex-grow: 1;
@@ -68,7 +72,11 @@ button:hover {
 
 .column {
     flex-grow: 1;
-    border: 1px solid grey;
+}
+
+.showGrid {
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .slider {

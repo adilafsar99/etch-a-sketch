@@ -15,3 +15,11 @@ const createGrid = function (numOfSquares = 16) {
 }
 
 createGrid()
+
+const toggleGridLines = function (event) {
+    const columns = document.querySelectorAll('.column');
+    columns.forEach(column => column.classList.toggle('showGrid'));
+}
+
+const toggleButton = document.querySelector('#toggle-button');
+toggleButton.addEventListener('click', toggleGridLines)
