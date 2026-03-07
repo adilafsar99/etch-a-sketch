@@ -23,3 +23,11 @@ Adjust grid size
 1) Call a function whenever the slider is moved.
 2) Remove all the containers currently present in the grid.
 3) Read the value of the slider and pass it to the function that creates grids.
+
+Fill the squares
+
+1) Call a function whenever the mouse hovers over one of the containers.
+2) Check if the container is filled or not.
+3) If the container is not filled, change the background color of the container and set it's opacity very low.
+4) If the container is filled, that is it has a background color, increase it's opacity a little.
+5) On subsequent hovers over filled containers increase their opacity little by little until they are fully visible.
