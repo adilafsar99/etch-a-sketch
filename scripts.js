@@ -36,16 +36,18 @@ const adjustGrid = function (event) {
 }
 
 const fillSolid = function (event) {
-    const column = event.target;
-    if (column.classList.contains('filled')) {
-        if (column.style.opacity < 1) {
-            let opacity = +column.style.opacity;
-            opacity += 0.2;
-            column.style.opacity = opacity;
+    if (event.buttons === 1) {
+        const column = event.target;
+        if (column.classList.contains('filled')) {
+            if (column.style.opacity < 1) {
+                let opacity = +column.style.opacity;
+                opacity += 0.2;
+                column.style.opacity = opacity;
+            }
         }
-    }
-    else {
-        column.classList.add('filled');
+        else {
+            column.classList.add('filled');
+        }
     }
 }
 
