@@ -1,0 +1,12 @@
+Create a grid
+
+1) Read the value of the slider whenever it's readjusted.
+2) Store the value in variables row and column as the grid is equal in length and width.
+3) Fetch the grid in which the squares will be created.
+4) Run a loop that creates a container equal to the number of rows.
+5) Assign all the row containers the same class.
+6) For every row container created, run a loop that creates containers equal to the number of columns.
+7) Asign every column container the same class.
+8) Attach a function for detecting mouse movements over the columns to the column containers.
+9) Attach every column created to the row.
+10) Attach every row created to the grid.
