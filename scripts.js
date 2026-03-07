@@ -12,6 +12,7 @@ const createGrid = function (numOfSquares = 16) {
             if (show_grid) {
                 column.classList.add('showGrid');
             }
+            column.addEventListener('mouseover', fillSolid);
             row.appendChild(column);
         }
         grid.appendChild(row)
@@ -32,6 +33,20 @@ const toggleGridLines = function (event) {
 const adjustGrid = function (event) {
     let numOfSquares = event.target.value;
     createGrid(numOfSquares);
+}
+
+const fillSolid = function (event) {
+    const column = event.target;
+    if (column.classList.contains('filled')) {
+        if (column.style.opacity < 1) {
+            let opacity = +column.style.opacity;
+            opacity += 0.2;
+            column.style.opacity = opacity;
+        }
+    }
+    else {
+        column.classList.add('filled');
+    }
 }
 
 let show_grid = false;

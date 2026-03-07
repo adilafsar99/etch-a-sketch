@@ -87,3 +87,12 @@ button:active {
     width: 25%;
     margin: 0 auto;
 }
+
+
+
+
+
+.filled {
+    background-color: black;
+    opacity: 0.2;
+}
