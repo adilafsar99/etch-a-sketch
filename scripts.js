@@ -35,6 +35,11 @@ const adjustGrid = function (event) {
     createGrid(numOfSquares);
 }
 
+const clearGrid = function (event) {
+    const squares = document.querySelectorAll('.column');
+    squares.forEach(square => square.classList.add('transparent'));
+}
+
 const fillSolid = function (event) {
     const column = event.target;
     if (event.buttons === 1) {
@@ -60,5 +65,7 @@ const toggleButton = document.querySelector('#toggle-button');
 toggleButton.addEventListener('click', toggleGridLines);
 const slider = document.querySelector('#slider');
 slider.addEventListener('change', adjustGrid);
+const clearButton = document.querySelector('#clear-button');
+clearButton.addEventListener('click', clearGrid);
 
 createGrid();
