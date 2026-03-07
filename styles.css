@@ -13,3 +13,54 @@ body {
 .title {
     margin: 10px 0;
 }
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.buttons-and-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 500px;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 10%;
+}
+
+button {
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 3px;
+    transition: color 1s, background-color 1s;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+}
+
+.grid {
+    height: inherit;
+    border: 2px solid silver;
+    flex-basis: 90%;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 25%;
+    margin: 0 auto;
+}
