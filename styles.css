@@ -57,6 +57,19 @@ button:active {
     border: 2px solid beige;
 }
 
+.color-picker {
+    width: 50px;
+    padding: 5px;
+    border: 2px solid black;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+#color-picker {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
 .grid {
     height: inherit;
     border: 2px solid silver;

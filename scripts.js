@@ -12,11 +12,13 @@ const createGrid = function (numOfSquares = 16) {
             if (show_grid) {
                 column.classList.add('showGrid');
             }
-            column.addEventListener('mouseover', fillSolid);
+            column.addEventListener('mouseover', handleHover);
             row.appendChild(column);
         }
         grid.appendChild(row)
     }
+    const gridSize = document.querySelector('#grid-size');
+    gridSize.textContent = `${slider.value} x ${slider.value}`;
 }
 
 const toggleGridLines = function (event) {
@@ -34,13 +36,14 @@ const clearGrid = function (event) {
     const squares = document.querySelectorAll('.column');
     squares.forEach(square => {
         square.classList.add('transparent');
-        square.style.opacity = 0;      
+        square.style.opacity = 0;
     })
 }
 
 const changePenColor = function (event) {
     if (event.target.id === 'color-picker') {
-       pen_color = event.target.value;
+        pen_color = event.target.value;
+        console.log(pen_color)
     }
 }
 
@@ -49,32 +52,39 @@ const adjustGrid = function (event) {
     createGrid(numOfSquares);
 }
 
-const fillSolid = function (event) {
-    const column = event.target;
-    console.log(column.style.opacity)
-    if (event.buttons === 1) {
-        column.classList.remove('transparent');
-        if (column.classList.contains('filled')) {
-            if (+column.style.opacity < 1) {
-                let opacity = +column.style.opacity;
-                opacity += 0.2;
-                column.style.opacity = opacity;
-            }
-        }
-        else {
-            column.classList.add('filled');
-            column.classList.remove('transparent');
+const fillSolid = function (column) {
+    column.classList.remove('transparent');
+    if (column.classList.contains('filled')) {
+        if (+column.style.opacity < 1) {
+            let opacity = +column.style.opacity;
+            opacity += 0.2;
+            column.style.opacity = opacity;
         }
     }
     else {
-        column.classList.add('transparent');
-        column.classList.remove('filled');
-        column.style.opacity = 0;
+        column.classList.add('filled');
+        column.classList.remove('transparent');
+    }
+}
+
+const eraseFill = function (column) {
+    column.classList.add('transparent');
+    column.classList.remove('filled');
+    column.style.opacity = 0;
+}
+
+const handleHover = function (event) {
+    const column = event.target;
+    if (event.buttons === 1) {
+        fillSolid(column);
+    }
+    else {
+        eraseFill(column);
     }
 }
 
 let show_grid = false;
-let pen_color = '#000';
+let pen_color = '#000000';
 
 const toggleButton = document.querySelector('#toggle-button');
 toggleButton.addEventListener('click', toggleGridLines);
@@ -84,8 +94,5 @@ const clearButton = document.querySelector('#clear-button');
 clearButton.addEventListener('click', clearGrid);
 const colorPicker = document.querySelector('#color-picker');
 colorPicker.addEventListener('change', changePenColor);
-
-const gridSize = document.querySelector('#grid-size');
-gridSize.textContent = `${slider.value} x ${slider.value}`;
 
 createGrid();
