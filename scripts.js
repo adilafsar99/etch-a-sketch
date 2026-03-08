@@ -36,6 +36,7 @@ const clearGrid = function (event) {
     const squares = document.querySelectorAll('.column');
     squares.forEach(square => {
         square.classList.add('transparent');
+        square.style.backgroundColor = '#ffffff'
         square.style.opacity = 0;
     })
 }
@@ -43,7 +44,6 @@ const clearGrid = function (event) {
 const changePenColor = function (event) {
     if (event.target.id === 'color-picker') {
         pen_color = event.target.value;
-        console.log(pen_color)
     }
 }
 
@@ -54,7 +54,8 @@ const adjustGrid = function (event) {
 
 const fillSolid = function (column) {
     column.classList.remove('transparent');
-    if (column.classList.contains('filled')) {
+    if (column.classList.contains('filled') &&
+        column.style.backgroundColor === pen_color) {
         if (+column.style.opacity < 1) {
             let opacity = +column.style.opacity;
             opacity += 0.2;
@@ -63,13 +64,15 @@ const fillSolid = function (column) {
     }
     else {
         column.classList.add('filled');
-        column.classList.remove('transparent');
+        column.style.backgroundColor = pen_color;
+        column.style.opacity = 0.2;
     }
 }
 
 const eraseFill = function (column) {
-    column.classList.add('transparent');
     column.classList.remove('filled');
+    column.classList.add('transparent');
+    column.style.backgroundColor = '#ffffff'
     column.style.opacity = 0;
 }
 
