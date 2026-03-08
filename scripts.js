@@ -37,12 +37,17 @@ const adjustGrid = function (event) {
 
 const clearGrid = function (event) {
     const squares = document.querySelectorAll('.column');
-    squares.forEach(square => square.classList.add('transparent'));
+    squares.forEach(square => {
+        square.classList.add('transparent');
+        square.style.opacity = 0;      
+    })
 }
 
 const fillSolid = function (event) {
     const column = event.target;
+    console.log(column.style.opacity)
     if (event.buttons === 1) {
+        column.classList.remove('transparent');
         if (column.classList.contains('filled')) {
             if (+column.style.opacity < 1) {
                 let opacity = +column.style.opacity;
@@ -52,10 +57,13 @@ const fillSolid = function (event) {
         }
         else {
             column.classList.add('filled');
+            column.classList.remove('transparent');
         }
     }
     else {
-        column.style.backgroundColor = 'white';
+        column.classList.add('transparent');
+        column.classList.remove('filled');
+        column.style.opacity = 0;
     }
 }
 
