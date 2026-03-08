@@ -26,9 +26,11 @@ const toggleGridLines = function (event) {
     columns.forEach(column => column.classList.toggle('showGrid'));
     if (show_grid) {
         show_grid = false;
+        event.target.textContent = 'Show Grid Lines';
     }
     else {
         show_grid = true;
+        event.target.textContent = 'Hide Grid Lines';
     }
 }
 
@@ -57,11 +59,14 @@ const rgbToHex = function (rgbString) {
 }
 
 const toggleRandomize = function (event) {
-    if (randomize) {
-        randomize = false;
+    if (isRandomized) {
+        isRandomized = false;
+        event.target.textContent = 'Randomize';
+        penColor = colorPicker.value;
     }
     else {
-        randomize = true;
+        isRandomized = true;
+        event.target.textContent = 'Single Color';
     }
 }
 
@@ -69,7 +74,8 @@ const getRandomRGB = function () {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+    let randomRGB = `rgb(${r}, ${g}, ${b})`;
+    return randomRGB;
 }
 
 const adjustGrid = function (event) {
@@ -81,7 +87,7 @@ const fillColor = function (column) {
     column.classList.remove('transparent');
     let currentRGBBG = column.style.backgroundColor;
     let currentHexBG = rgbToHex(currentRGBBG);
-    if (column.classList.contains('filled') && penColor === currentHexBG) {
+    if (column.classList.contains('filled') && penColor === currentHexBG && !isRandomized) {
         if (+column.style.opacity < 1) {
             let opacity = +column.style.opacity;
             opacity += 0.2;
@@ -89,12 +95,14 @@ const fillColor = function (column) {
         }
     }
     else {
+        let opacity = 0.2;
         column.classList.add('filled');
-        if (randomize) {
+        if (isRandomized) {
             penColor = getRandomRGB();
+            opacity = 1;
         }
         column.style.backgroundColor = penColor;
-        column.style.opacity = 0.2;
+        column.style.opacity = opacity;
     }
 }
 
@@ -117,7 +125,7 @@ const handleHover = function (event) {
 
 let show_grid = false;
 let penColor = '#000000';
-let randomize = false;
+let isRandomized = false;
 
 const toggleButton = document.querySelector('#toggle-button');
 toggleButton.addEventListener('click', toggleGridLines);
