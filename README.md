@@ -1,2 +1,1 @@
-# etch-a-sketch
-A sketchpad like program written using HTML, CSS and JS.
+A heavily simplified painting program that lets you chose the color you want to sketch with, erase your sketches and adjust the size of the grid. I wanted to add the ability to fill spaces but sadly that is beyond my understanding at the moment. Will add it in the future when I get the hang of it.
