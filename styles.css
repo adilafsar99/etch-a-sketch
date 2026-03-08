@@ -60,7 +60,7 @@ button:active {
 .grid {
     height: inherit;
     border: 2px solid silver;
-    flex-basis: 90%;
+    flex-basis: 65%;
     display: flex;
     flex-direction: column;
 }
@@ -83,10 +83,11 @@ button:active {
 
 .slider {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 25%;
+    width: 20%;
     margin: 0 auto;
 }
 

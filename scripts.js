@@ -30,17 +30,23 @@ const toggleGridLines = function (event) {
     }
 }
 
-const adjustGrid = function (event) {
-    let numOfSquares = event.target.value;
-    createGrid(numOfSquares);
-}
-
 const clearGrid = function (event) {
     const squares = document.querySelectorAll('.column');
     squares.forEach(square => {
         square.classList.add('transparent');
         square.style.opacity = 0;      
     })
+}
+
+const changePenColor = function (event) {
+    if (event.target.id === 'color-picker') {
+       pen_color = event.target.value;
+    }
+}
+
+const adjustGrid = function (event) {
+    let numOfSquares = event.target.value;
+    createGrid(numOfSquares);
 }
 
 const fillSolid = function (event) {
@@ -68,6 +74,7 @@ const fillSolid = function (event) {
 }
 
 let show_grid = false;
+let pen_color = '#000';
 
 const toggleButton = document.querySelector('#toggle-button');
 toggleButton.addEventListener('click', toggleGridLines);
@@ -75,5 +82,10 @@ const slider = document.querySelector('#slider');
 slider.addEventListener('change', adjustGrid);
 const clearButton = document.querySelector('#clear-button');
 clearButton.addEventListener('click', clearGrid);
+const colorPicker = document.querySelector('#color-picker');
+colorPicker.addEventListener('change', changePenColor);
+
+const gridSize = document.querySelector('#grid-size');
+gridSize.textContent = `${slider.value} x ${slider.value}`;
 
 createGrid();
