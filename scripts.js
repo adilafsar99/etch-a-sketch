@@ -47,15 +47,30 @@ const changePenColor = function (event) {
     }
 }
 
+const toggleRandomize = function (event) {
+    if (randomize) {
+        randomize = false;
+    }
+    else {
+        randomize = true;
+    }
+}
+
+const getRandomRGB = function () {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 const adjustGrid = function (event) {
     let numOfSquares = event.target.value;
     createGrid(numOfSquares);
 }
 
-const fillSolid = function (column) {
+const fillColor = function (column) {
     column.classList.remove('transparent');
-    if (column.classList.contains('filled') &&
-        column.style.backgroundColor === pen_color) {
+    if (column.classList.contains('filled')) {
         if (+column.style.opacity < 1) {
             let opacity = +column.style.opacity;
             opacity += 0.2;
@@ -64,7 +79,10 @@ const fillSolid = function (column) {
     }
     else {
         column.classList.add('filled');
-        column.style.backgroundColor = pen_color;
+        if (randomize) {
+            penColor = getRandomRGB();
+        }
+        column.style.backgroundColor = penColor;
         column.style.opacity = 0.2;
     }
 }
@@ -79,7 +97,7 @@ const eraseFill = function (column) {
 const handleHover = function (event) {
     const column = event.target;
     if (event.buttons === 1) {
-        fillSolid(column);
+        fillColor(column);
     }
     else {
         eraseFill(column);
@@ -87,7 +105,8 @@ const handleHover = function (event) {
 }
 
 let show_grid = false;
-let pen_color = '#000000';
+let penColor = '#000000';
+let randomize = false;
 
 const toggleButton = document.querySelector('#toggle-button');
 toggleButton.addEventListener('click', toggleGridLines);
@@ -97,5 +116,7 @@ const clearButton = document.querySelector('#clear-button');
 clearButton.addEventListener('click', clearGrid);
 const colorPicker = document.querySelector('#color-picker');
 colorPicker.addEventListener('change', changePenColor);
+const randomizer = document.querySelector('#randomizer');
+randomizer.addEventListener('click', toggleRandomize)
 
 createGrid();
