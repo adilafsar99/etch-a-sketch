@@ -63,10 +63,12 @@ const toggleRandomize = function (event) {
         isRandomized = false;
         event.target.textContent = 'Randomize';
         penColor = colorPicker.value;
+        colorPicker.disabled = false;
     }
     else {
         isRandomized = true;
         event.target.textContent = 'Single Color';
+        colorPicker.disabled = true;
     }
 }
 

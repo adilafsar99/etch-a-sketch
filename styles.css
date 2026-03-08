@@ -4,10 +4,12 @@ body {
     padding: 0;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: blanchedalmond;
 }
 
 .header {
-    font-size: 32px;
+    font-size: 24px;
+    font-style: italic;
 }
 
 .title {
@@ -17,6 +19,8 @@ body {
 .main {
     width: 80%;
     margin: 0 auto;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .buttons-and-grid {
@@ -24,8 +28,8 @@ body {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    height: 500px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .buttons {
@@ -45,11 +49,15 @@ button {
     border: 2px solid black;
     padding: 3px;
     transition: color 0.5s, background-color 1s;
+    width: 100px;
+    font-weight: bold;
+    box-shadow: 3px 3px lightblue;
 }
 
 button:hover {
     color: white;
     background-color: black;
+    
 }
 
 button:active {
@@ -70,12 +78,22 @@ button:active {
     cursor: pointer;
 }
 
+#color-picker[disabled] {
+    background-color: grey;
+}
+
+.grid-box {
+   flex-basis: 70%;
+}
+
 .grid {
-    height: inherit;
-    border: 2px solid silver;
-    flex-basis: 65%;
+    height: 500px;
+    border: 12px solid grey;
+    border-radius: 8px;
+    box-shadow: 10px 10px 5px lightblue;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .row {
@@ -95,11 +113,12 @@ button:active {
 }
 
 .slider {
+    flex-basis: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 20%;
     margin: 0 auto;
+    gap: 3px;
 }

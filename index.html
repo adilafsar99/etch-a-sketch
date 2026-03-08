@@ -8,29 +8,25 @@
 		<title>Etch-a-Sketch</title>
 	</head>
 	<body>
-		<header class="header">
-			<h1 class="title">Etch-A-Sketch</h1>
-		</header>
 		<main class="main">
 			<div class="buttons-and-grid">
 				<div class="buttons">
+					<input type="color" name="color-picker" id="color-picker" />
+					<button id="randomizer">Randomize</button>
 					<button id="toggle-button">Show Grid Lines</button>
 					<button id="clear-button">Clear Grid</button>
-					<span class="color-picker">
-						<label for="color-picker">Pen Color</label>
-						<input
-							type="color"
-							name="color-picker"
-							id="color-picker"
-						/>
-					</span>
-					<button id="randomizer">Randomize</button>
+					<div class="slider">
+					<span id="grid-size"></span>
+					<input type="range" id="slider" min="16" max="64" step="1" />
+					<label for="slider">Grid Size</label>
 				</div>
-				<div class="grid"></div>
-			</div>
-			<div class="slider">
-				<span id="grid-size"></span>
-				<input type="range" id="slider" min="16" max="64" step="1" />
+				</div>
+				<div class="grid-box">
+					<div class="header">
+						<h1 class="title">Etch-A-Sketch</h1>
+					</div>
+					<div class="grid"></div>
+				</div>
 			</div>
 		</main>
 	</body>
