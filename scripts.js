@@ -35,16 +35,25 @@ const toggleGridLines = function (event) {
 const clearGrid = function (event) {
     const squares = document.querySelectorAll('.column');
     squares.forEach(square => {
+        square.classList.remove('filled');
         square.classList.add('transparent');
         square.style.backgroundColor = '#ffffff'
-        square.style.opacity = 0;
+        square.style.opacity = '';
     })
 }
 
 const changePenColor = function (event) {
     if (event.target.id === 'color-picker') {
-        pen_color = event.target.value;
+        penColor = event.target.value;
     }
+}
+
+const rgbToHex = function (rgbString) {
+    console.log(rgbString)
+    let currentRGBValues = rgbString.slice(4, -1);
+    let rgbArray = currentRGBValues.split(',');
+    let [r, g, b] = rgbArray;
+    return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
 const toggleRandomize = function (event) {
@@ -70,7 +79,9 @@ const adjustGrid = function (event) {
 
 const fillColor = function (column) {
     column.classList.remove('transparent');
-    if (column.classList.contains('filled')) {
+    let currentRGBBG = column.style.backgroundColor;
+    let currentHexBG = rgbToHex(currentRGBBG);
+    if (column.classList.contains('filled') && penColor === currentHexBG) {
         if (+column.style.opacity < 1) {
             let opacity = +column.style.opacity;
             opacity += 0.2;
@@ -91,7 +102,7 @@ const eraseFill = function (column) {
     column.classList.remove('filled');
     column.classList.add('transparent');
     column.style.backgroundColor = '#ffffff'
-    column.style.opacity = 0;
+    column.style.opacity = '';
 }
 
 const handleHover = function (event) {
